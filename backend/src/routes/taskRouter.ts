@@ -5,6 +5,8 @@ const taskRouter = Router();
 
 const taskController = new TaskController();
 
-taskRouter.post('/', taskController.createTask);
+taskRouter.get('/', taskController.getAll)
+
+taskRouter.post('/', taskController.create);
 
 export default taskRouter;

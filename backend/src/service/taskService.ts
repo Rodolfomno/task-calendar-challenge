@@ -8,4 +8,10 @@ export default class TaskService {
 
     return newTask;
   }
+
+  public static async getAll() {
+    const allTasks = await taskModel.findAll()
+
+    return allTasks;
+  }
 }
