@@ -1,4 +1,7 @@
-const config = {
+import { Options } from "sequelize";
+import 'dotenv/config';
+
+const config: Options = {
   username: process.env.DB_USER || 'rodolfo',
   password: process.env.DB_PASS || '12345678',
   database: process.env.DB_NAME || 'SPA_TASK_CALENDAR',

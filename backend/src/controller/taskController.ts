@@ -10,6 +10,14 @@ export default class TaskController {
     return res.status(201).json(newTask);
   }
 
+  public update = async (req: Request, res: Response, _next: NextFunction) => {
+    const { id, title, description, startDate, endDate } = req.body;
+    const taskEdit = { id, title, description, startDate, endDate }
+    const editedTask = await TaskService.update(taskEdit);
+
+    return res.status(200).json(editedTask);
+  }
+
   public getAll = async(_req: Request, res: Response, _next: NextFunction) => {
     const allTasks = await TaskService.getAll();
 

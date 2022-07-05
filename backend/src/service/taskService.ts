@@ -9,6 +9,12 @@ export default class TaskService {
     return newTask;
   }
 
+  public static async update(task: ITask) {
+    const editedTask = await taskModel.update(task, { where: task.id });
+    
+    return editedTask;
+  }
+
   public static async getAll() {
     const allTasks = await taskModel.findAll()
 
