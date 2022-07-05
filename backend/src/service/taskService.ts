@@ -14,4 +14,10 @@ export default class TaskService {
 
     return allTasks;
   }
+
+  public static async getById(id: number) {
+    const taskById = await taskModel.findOne({ where: { id }});
+
+    return taskById;
+  }
 }

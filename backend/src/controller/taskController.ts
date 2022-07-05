@@ -15,4 +15,11 @@ export default class TaskController {
 
     return res.status(200).json(allTasks);
   }
+
+  public getById = async(req: Request, res: Response, _next: NextFunction) => {
+    const { id } = req.body;
+    const task = await TaskService.getById(id);
+
+    return res.status(200).json(task);
+  }
 }
