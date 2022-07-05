@@ -1,4 +1,6 @@
 import AppContext from './AppContext';
+import PropTypes from 'prop-types';
+
 
 export default function AppProvider({ children }) {
   return (
@@ -7,3 +9,7 @@ export default function AppProvider({ children }) {
     </AppContext.Provider>
   );
 }
+
+AppProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
