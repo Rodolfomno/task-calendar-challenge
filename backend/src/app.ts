@@ -1,4 +1,5 @@
 import express from 'express';
+import taskRouter from './routes/taskRouter';
 
 class App {
   public app: express.Express;
@@ -6,6 +7,7 @@ class App {
   constructor() {
     this.app = express();
     this.config();
+    this.routes();
   }
 
   private config():void {
@@ -18,6 +20,10 @@ class App {
 
     this.app.use(accessControl);
     this.app.use(express.json());
+  }
+  
+  private routes(): void {
+    this.app.use('/tasks', taskRouter);
   }
 
   public start(PORT: string | number):void {
