@@ -22,4 +22,11 @@ export default class TaskController {
 
     return res.status(200).json(task);
   }
+
+  public deleteById = async (req: Request, res: Response, _next: NextFunction) => {
+    const { id } = req.body;
+    await TaskService.deleteById(id);
+
+    return res.status(204).end();
+  }
 }

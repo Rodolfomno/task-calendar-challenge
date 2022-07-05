@@ -20,4 +20,8 @@ export default class TaskService {
 
     return taskById;
   }
+
+  public static async deleteById(id: number) {
+    await taskModel.destroy({ where: { id } });
+  }
 }

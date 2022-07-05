@@ -11,4 +11,6 @@ taskRouter.get('/:id', taskController.getById);
 
 taskRouter.post('/', taskController.create);
 
+taskRouter.delete('/:id', taskController.deleteById);
+
 export default taskRouter;
