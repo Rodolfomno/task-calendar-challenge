@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TaskButton({ isBtnDisabled, btnText, btnType, className, handleClick }) {
+function TaskButton({ isDisabled, btnText, btnType, className, handleClick }) {
   return (
     <div>
       <button
         className={ className }
         type={ btnType }
-        disabled={ isBtnDisabled }
+        disabled={ isDisabled }
         onClick={ handleClick }
       >
         { btnText }
@@ -22,5 +22,5 @@ TaskButton.propTypes = {
   className: PropTypes.string.isRequired,
   btnType: PropTypes.string.isRequired,
   btnText: PropTypes.string.isRequired,
-  isBtnDisabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };

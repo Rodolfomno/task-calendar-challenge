@@ -12,7 +12,6 @@ export default function AppProvider({ children }) {
   const [description, setDescription] = useState('')
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const [selectedTask, setSelectedTask] = useState({});
 
 
@@ -29,8 +28,6 @@ export default function AppProvider({ children }) {
     setEndDate,
     taskList,
     setTaskList,
-    isBtnDisabled,
-    setIsBtnDisabled,
     selectedTask,
     setSelectedTask
   }
@@ -43,12 +40,6 @@ export default function AppProvider({ children }) {
 
     getAllData();
   }, []); 
-
-  useEffect(() => {
-    const isTitleValid = title && title.length > 4;
-
-    setIsBtnDisabled(!isTitleValid);
-  }, [title]);
 
   return (
     <AppContext.Provider

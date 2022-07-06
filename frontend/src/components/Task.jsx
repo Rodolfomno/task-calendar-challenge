@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../context/AppContext';
 import TaskButton from './TaskButton';
 import DateInput from './DateInput';
@@ -19,8 +19,18 @@ export default function Task() {
     endDate,
     setEndDate,
     setTaskList,
-    isBtnDisabled
   } = useContext(AppContext);
+
+  const [isDisabled, setIsDisabled] = useState();
+
+  useEffect(() => {
+    const isTitleValid = title && title.length > 4;
+    if ( !isTitleValid) {
+      setIsDisabled(true)
+    } else {
+      setIsDisabled(false);
+    }
+  }, [title, description]);
 
   const createTask = async () => {
     const newTask = { title, description, startDate, endDate }
@@ -90,14 +100,14 @@ export default function Task() {
           !isEditing ? 
             (<TaskButton
               className="form-button"
-              isDisabled={ isBtnDisabled }
+              isDisabled={ isDisabled }
               btnText="Adicionar Task"
               btnType="submit"
             />
             ) : (
             <TaskButton
               className="form-button"
-              isDisabled={ isBtnDisabled }
+              isDisabled={ isDisabled }
               btnText="Editar Task"
               btnType="submit"
             />)

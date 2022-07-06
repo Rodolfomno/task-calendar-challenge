@@ -29,8 +29,8 @@ export default class TaskController {
   }
 
   public deleteById = async (req: Request, res: Response, _next: NextFunction) => {
-    const { id } = req.body;
-    await TaskService.deleteById(id);
+    const { id } = req.params;
+    await TaskService.deleteById(Number(id));
 
     return res.status(204).end();
   }

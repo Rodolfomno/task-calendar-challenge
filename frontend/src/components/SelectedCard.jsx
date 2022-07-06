@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import TaskButton from './TaskButton';
+import axios from 'axios';
+import { url } from '../utils/url';
 
 function SelectedCard() {
   const {
+    taskList,
+    setTaskList,
     selectedTask,
     isEditingTask,
     setIsEditing,
@@ -18,10 +22,11 @@ function SelectedCard() {
     title,
     start,
     end,
+    id,
     extendedProps: { description },
   } = selectedTask;
 
-  const handleEditTask = () => {
+  const handleEdit = () => {
     console.log(selectedTask);
     setIsEditing(!isEditingTask);
 
@@ -30,6 +35,17 @@ function SelectedCard() {
     setStartDate(start);
     setEndDate(end);
     setSelectedTask({});
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`${url}/${id}`);
+      const updatedTaskList = taskList.filter((task) => task.id !== id);
+      setTaskList(updatedTaskList);
+      setSelectedTask({});
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -72,11 +88,12 @@ function SelectedCard() {
         <TaskButton
           btnText="Editar tarefa"
           btnType="button"
-          handleClick={ handleEditTask }
+          handleClick={ handleEdit }
         />
         <TaskButton
           btnText="Deletar tarefa"
           btnType="button"
+          handleClick={ handleDelete }
         />
       </div>
     </div>
