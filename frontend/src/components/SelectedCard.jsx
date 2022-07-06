@@ -30,11 +30,10 @@ function SelectedCard() {
     console.log(selectedTask);
     setIsEditing(!isEditingTask);
 
-    setTitle(title);
     setDescription(description || '');
+    setTitle(title);
     setStartDate(start);
     setEndDate(end);
-    setSelectedTask({});
   };
 
   const handleDelete = async () => {

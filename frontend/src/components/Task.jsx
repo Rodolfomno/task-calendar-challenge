@@ -4,6 +4,8 @@ import TaskButton from './TaskButton';
 import DateInput from './DateInput';
 import postCreateTask from '../utils/postCreateTask';
 import { url } from '../utils/url';
+import updateTaskApi from '../utils/updateTaskApi';
+import getAllTasks from '../utils/getAllTasks';
 
 
 export default function Task() {
@@ -19,6 +21,8 @@ export default function Task() {
     endDate,
     setEndDate,
     setTaskList,
+    selectedTask,
+    setSelectedTask
   } = useContext(AppContext);
 
   const [isDisabled, setIsDisabled] = useState();
@@ -32,6 +36,17 @@ export default function Task() {
     }
   }, [title, description]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAllTasks(url);
+      
+      setTaskList(response.data);
+    };
+    
+    fetchData();
+  }, []);
+
+  // function to create a task
   const createTask = async () => {
     const newTask = { title, description, startDate, endDate }
     const response = await postCreateTask(url, newTask)
@@ -39,12 +54,15 @@ export default function Task() {
     setTaskList(newTaskList);
   }
 
-  const handleSubmit = (e) => {
+  // function that handle submit button
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createTask()
-
+    
     if(isEditing) {
+      await updateSelectedTask()
       setIsEditing(false);
+    } else {
+      await createTask()
     }
 
     setTitle('')
@@ -52,6 +70,22 @@ export default function Task() {
     setStartDate(new Date());
     setEndDate(new Date());
   }
+
+  const updateSelectedTask = async () => {
+    const { id } = selectedTask;
+    console.log('id', selectedTask.id)
+    const updatedTask = {
+      id,
+      title,
+    };
+
+    const response = await updateTaskApi(`${url}`, updatedTask);
+    
+    setTaskList(response.data);
+    setSelectedTask({});
+    setIsEditing(false);
+  };
+
 
   return (
     <form 

@@ -10,8 +10,9 @@ export default class TaskController {
 
   public update = async (req: Request, res: Response, _next: NextFunction) => {
     const { body } = req;
+    console.log(body);
     const editedTask = await TaskService.update(body);
-
+    console.log('atualizou');
     return res.status(200).json(editedTask);
   }
 

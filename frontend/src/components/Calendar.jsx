@@ -15,7 +15,6 @@ export default function Calendar() {
     const selectedTask = taskList.find((task) => task.id === id);
     
     setSelectedTask(selectedTask);
-    console.log(selectedTask);
   };
 
   return (
