@@ -20,7 +20,7 @@ export default function Calendar() {
           {
           left: 'prev,today,next',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          right: 'timeGridDay,timeGridWeek,dayGridMonth'
           }}
         eventClick={ (e) => handleClick(e) }
       />
