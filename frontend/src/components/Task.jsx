@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 import AppContext from '../context/AppContext';
 import TaskButton from './TaskButton';
 import DateInput from './DateInput';
+import postCreateTask from '../utils/postCreateTask';
+import { url } from '../utils/url';
+
 
 export default function Task() {
   const {
@@ -14,17 +17,31 @@ export default function Task() {
     startDate,
     setStartDate,
     endDate,
-    setEndDate
+    setEndDate,
+    setTaskList,
+    isBtnDisabled
   } = useContext(AppContext);
 
-  function handleSubmit(e) {
+  const createTask = async () => {
+    const newTask = { title, description, startDate, endDate }
+    const response = await postCreateTask(url, newTask)
+    const newTaskList = [newTask, response.result];
+    setTaskList(newTaskList);
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    createTask()
+
     if(isEditing) {
       setIsEditing(false);
     }
-  }
 
-  const isBtnDisabled = true;
+    setTitle('')
+    setDescription('')
+    setStartDate(new Date());
+    setEndDate(new Date());
+  }
 
   return (
     <form 
@@ -33,13 +50,13 @@ export default function Task() {
     >
       <div>
         <label htmlFor="title">
-          Titulo:
+          Tarefa:
           <input
             value={ title }
             onChange={ (e) => setTitle(e.target.value) }
             id="title"
             type="text"
-            placeholder="Titulo"
+            placeholder="Tarefa"
           />
         </label>
       </div>
