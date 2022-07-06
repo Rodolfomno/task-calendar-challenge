@@ -3,16 +3,16 @@ import Task from '../database/models/taskModel';
 
 export default class TaskService {
   public static async create(task: ITask) {
-    const newTask = await Task.create({ task });
+    const newTask = await Task.create(task);
 
     return newTask;
   }
 
   public static async update(task: ITask) {
     const id = task.id;
-    const editedTask = await Task.update(task, { where: { id } });
+    await Task.update(task, { where: { id } });
     
-    return editedTask;
+    return { message: 'atualizado'};
   }
 
   public static async getAll() {

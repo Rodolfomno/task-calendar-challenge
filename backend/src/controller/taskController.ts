@@ -3,23 +3,19 @@ import TaskService from '../service/taskService';
 
 export default class TaskController {
   public create = async (req: Request, res: Response, _next: NextFunction) => {
-    const { title, description } = req.body;
-    const reqTask = { description, title }
-    const newTask = await TaskService.create(reqTask);
+    const newTask = await TaskService.create(req.body);
 
     return res.status(201).json(newTask);
   }
 
   public update = async (req: Request, res: Response, _next: NextFunction) => {
-    const { id, title, description, startDate, endDate } = req.body;
-    const taskEdit = { id, title, description, startDate, endDate }
-    const editedTask = await TaskService.update(taskEdit);
+    const { body } = req;
+    const editedTask = await TaskService.update(body);
 
     return res.status(200).json(editedTask);
   }
 
   public getAll = async(_req: Request, res: Response, _next: NextFunction) => {
-    console.log('aosaoskaoks')
     const allTasks = await TaskService.getAll();
 
     return res.status(200).json(allTasks);
