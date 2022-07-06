@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",                                
+    "target": "es2019",                                
     "module": "commonjs",                           
     "sourceMap": true,                           
     "outDir": "./src",
     "strict": true,                                 
     "esModuleInterop": true,                        
     "skipLibCheck": true,                           
-    "forceConsistentCasingInFileNames": true        
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true      
   },
   "exclude": ["src/tests", "src/database"]
 }

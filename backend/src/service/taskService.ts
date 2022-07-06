@@ -1,33 +1,33 @@
 import { ITask } from '../Interfaces/ITask';
-
-const { taskModel } = require('../database/models');
+import Task from '../database/models/taskModel';
 
 export default class TaskService {
   public static async create(task: ITask) {
-    const newTask = await taskModel.create(task)
+    const newTask = await Task.create({ task });
 
     return newTask;
   }
 
   public static async update(task: ITask) {
-    const editedTask = await taskModel.update(task, { where: task.id });
+    const id = task.id;
+    const editedTask = await Task.update(task, { where: { id } });
     
     return editedTask;
   }
 
   public static async getAll() {
-    const allTasks = await taskModel.findAll()
+    const allTasks = await Task.findAll()
 
     return allTasks;
   }
 
   public static async getById(id: number) {
-    const taskById = await taskModel.findOne({ where: { id }});
+    const taskById = await Task.findOne({ where: { id }});
 
     return taskById;
   }
 
   public static async deleteById(id: number) {
-    await taskModel.destroy({ where: { id } });
+    await Task.destroy({ where: { id } });
   }
 }

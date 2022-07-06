@@ -1,12 +1,17 @@
 import { DataTypes, Model } from 'sequelize';
-import db from '.';
+// import db from '.';
+
+import { Options, Sequelize } from 'sequelize';
+import { config } from '../config/database';
+
+const db = new Sequelize(config as Options);
 
 class Task extends Model {
-  public id?: Number;
-  public title?: String;
-  public description?: String;
-  public startDate?: String;
-  public endDate?: String;
+  public id!: number;
+  public title!: string;
+  public description!: string;
+  public startDate!: string;
+  public endDate!: string;
 }
 
 Task.init({
@@ -22,8 +27,7 @@ Task.init({
   },
   description: {
     type: DataTypes.STRING,
-    allowNull: true,
-    defaultValue: ""
+    allowNull: true
   },
   startDate: {
     type: DataTypes.DATE,
@@ -36,7 +40,7 @@ Task.init({
 }, {
   underscored: false,
   timestamps: false,
-  tableName: 'Tasks',
+  modelName: 'Tasks',
   sequelize: db
 })
 

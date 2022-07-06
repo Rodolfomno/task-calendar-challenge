@@ -19,6 +19,7 @@ export default class TaskController {
   }
 
   public getAll = async(_req: Request, res: Response, _next: NextFunction) => {
+    console.log('aosaoskaoks')
     const allTasks = await TaskService.getAll();
 
     return res.status(200).json(allTasks);
