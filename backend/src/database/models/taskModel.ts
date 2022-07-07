@@ -2,7 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 // import db from '.';
 
 import { Options, Sequelize } from 'sequelize';
-import { config } from '../config/database';
+import config from '../config/database';
 
 const db = new Sequelize(config as Options);
 

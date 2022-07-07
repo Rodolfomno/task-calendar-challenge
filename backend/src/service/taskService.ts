@@ -25,6 +25,8 @@ export default class TaskService {
   public static async getById(id: number) {
     const taskById = await Task.findOne({ where: { id }});
 
+    if (!taskById) return false;
+
     return taskById;
   }
 
@@ -32,11 +34,11 @@ export default class TaskService {
     await Task.destroy({ where: { id } });
   }
 
-  public static async searchByQuery(query: String) {
-    const taskByQuery = await Task.findAll({
-      where: {
-        title: { [Op.like]: `%${query}%` },
-      }
-    });
+  public static async searchByQuery(title: string) {
+    const taskByQuery = await Task.findOne({ where: { title } });
+
+    if (!taskByQuery) return false;
+
+    return taskByQuery;
   }
 }

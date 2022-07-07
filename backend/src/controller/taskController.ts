@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import TaskService from '../service/taskService';
 
 export default class TaskController {
+
   public create = async (req: Request, res: Response, _next: NextFunction) => {
     const newTask = await TaskService.create(req.body);
 
@@ -10,9 +11,8 @@ export default class TaskController {
 
   public update = async (req: Request, res: Response, _next: NextFunction) => {
     const { body } = req;
-    console.log(body);
     const editedTask = await TaskService.update(body);
-    console.log('atualizou');
+
     return res.status(200).json(editedTask);
   }
 
@@ -23,8 +23,11 @@ export default class TaskController {
   }
 
   public getById = async(req: Request, res: Response, _next: NextFunction) => {
-    const { id } = req.body;
-    const task = await TaskService.getById(id);
+    const { id } = req.params;
+
+    const task = await TaskService.getById(Number(id));
+
+    if (!task) return res.status(404).json({ message: "Task nao encontrada" })
 
     return res.status(200).json(task);
   }
@@ -37,11 +40,13 @@ export default class TaskController {
   }
 
   public searchByQuery = async (req: Request, res: Response, _next: NextFunction) => {
-    const { q } = req.query;
-    console.log(req);
-    console.log(q);
-//    const taskBy = await TaskService.searchByQuery('oi');
+    const { query } = req.query;
+    const taskBy = await TaskService.searchByQuery(String(query));
 
-//   return res.status(200).json(taskBy);
+    if (!taskBy) return res.status(404).json({ message: "titulo não encontrato" });
+
+    console.log(taskBy)
+
+    return res.status(200).json(taskBy);
   }
 }

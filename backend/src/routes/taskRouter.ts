@@ -5,6 +5,8 @@ const taskRouter = Router();
 
 const taskController = new TaskController();
 
+taskRouter.get('/search', taskController.searchByQuery)
+
 taskRouter.get('/', taskController.getAll)
 
 taskRouter.get('/:id', taskController.getById);
@@ -15,6 +17,5 @@ taskRouter.put('/', taskController.update);
 
 taskRouter.delete('/:id', taskController.deleteById);
 
-taskRouter.get('/search', taskController.searchByQuery)
 
 export default taskRouter;
