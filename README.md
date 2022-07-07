@@ -39,13 +39,9 @@ Após terminar, acesse o link
 
 [http://localhost:3000/](http://localhost:3000/)
 
-Wait until the application starts.
-
-## Using the Application
-
 
 ## API Endpoints
-This API has the following endpoints:
+A aplicação contem os seguintes endpoints:
 
 | Method | Description |
 |---|---|
@@ -55,4 +51,6 @@ This API has the following endpoints:
 | `POST - localhost:3001/tasks` | Cria uma nova tarefa. |
 | `PUT - localhost:3001/tasks` | Atualiza uma tarefa existente |
 | `DELETE - localhost:3001/tasks/:id` | Deleta uam tarefa. |
+
+
 
