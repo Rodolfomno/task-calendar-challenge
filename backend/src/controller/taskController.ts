@@ -35,4 +35,13 @@ export default class TaskController {
 
     return res.status(204).end();
   }
+
+  public searchByQuery = async (req: Request, res: Response, _next: NextFunction) => {
+    const { q } = req.query;
+    console.log(req);
+    console.log(q);
+//    const taskBy = await TaskService.searchByQuery('oi');
+
+//   return res.status(200).json(taskBy);
+  }
 }

@@ -15,4 +15,6 @@ taskRouter.put('/', taskController.update);
 
 taskRouter.delete('/:id', taskController.deleteById);
 
+taskRouter.get('/search', taskController.searchByQuery)
+
 export default taskRouter;

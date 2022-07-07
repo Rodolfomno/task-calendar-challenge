@@ -1,5 +1,6 @@
 import { ITask } from '../Interfaces/ITask';
 import Task from '../database/models/taskModel';
+import { Op } from 'sequelize';
 
 export default class TaskService {
   public static async create(task: ITask) {
@@ -29,5 +30,13 @@ export default class TaskService {
 
   public static async deleteById(id: number) {
     await Task.destroy({ where: { id } });
+  }
+
+  public static async searchByQuery(query: String) {
+    const taskByQuery = await Task.findAll({
+      where: {
+        title: { [Op.like]: `%${query}%` },
+      }
+    });
   }
 }

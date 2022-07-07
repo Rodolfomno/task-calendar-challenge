@@ -39,12 +39,11 @@ export default function Task() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getAllTasks(url);
-      
       setTaskList(response.data);
     };
     
     fetchData();
-  }, []);
+  }, [setTaskList]);
 
   // function to create a task
   const createTask = async () => {
