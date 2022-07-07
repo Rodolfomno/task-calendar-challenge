@@ -83,13 +83,20 @@ function SelectedCard() {
           </>
         )}
       </div>
+
+      <div>
+        Duracao { (start - end).toLocaleString("pt-br") }
+      </div>
+
       <div className="buttons-form-conteiner">
         <TaskButton
+          className="edit-button"
           btnText="Editar tarefa"
           btnType="button"
           handleClick={ handleEdit }
         />
         <TaskButton
+          className="remove-button"
           btnText="Deletar tarefa"
           btnType="button"
           handleClick={ handleDelete }
