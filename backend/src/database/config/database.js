@@ -9,8 +9,8 @@ var config = {
     port: Number(process.env.DB_PORT) || 3306,
     dialect: 'mysql',
     dialectOptions: {
-        timezone: 'Z',
+      timezone: 'Z',
     },
     logging: false,
 };
-module.exports = { config };
+module.exports = config;

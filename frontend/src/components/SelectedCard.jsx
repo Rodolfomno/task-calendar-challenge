@@ -48,7 +48,7 @@ function SelectedCard() {
   };
 
   return (
-    <div>
+    <div className="task-form">
       <div>
         <h4>
           Título da tarefa:
@@ -83,7 +83,7 @@ function SelectedCard() {
           </>
         )}
       </div>
-      <div>
+      <div className="buttons-form-conteiner">
         <TaskButton
           btnText="Editar tarefa"
           btnType="button"

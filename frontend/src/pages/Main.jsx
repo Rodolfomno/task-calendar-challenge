@@ -12,9 +12,9 @@ export default function Main() {
 
   return (
     <>
-      <Search />
       <main>
       <section className="task-conteiner">
+      <Search />
         <Task />
         {selectedTask.title && <SelectedCard />}
       </section>

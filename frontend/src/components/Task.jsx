@@ -72,7 +72,6 @@ export default function Task() {
 
   const updateSelectedTask = async () => {
     const { id } = selectedTask;
-    console.log('id', selectedTask.id)
     const updatedTask = {
       id,
       title,

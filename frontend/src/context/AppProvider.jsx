@@ -13,6 +13,9 @@ export default function AppProvider({ children }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [selectedTask, setSelectedTask] = useState({});
+  const [searchInput, setSearchInput] = useState('');
+  const [isSearchBtnDisabled, setIsSearchBtnDisabled] = useState(true);
+
 
 
   const contextValue = {
@@ -29,8 +32,18 @@ export default function AppProvider({ children }) {
     taskList,
     setTaskList,
     selectedTask,
-    setSelectedTask
+    setSelectedTask,
+    searchInput,
+    setSearchInput,
+    isSearchBtnDisabled,
+    setIsSearchBtnDisabled
   }
+
+  useEffect(() => {
+    const isValid = searchInput.length > 4;
+
+    setIsSearchBtnDisabled(!isValid);
+  }, [searchInput]);
 
   useEffect(() => {
     const getAllData = async () => {

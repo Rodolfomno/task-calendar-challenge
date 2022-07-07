@@ -1,5 +1,38 @@
-h1 {
-  color: red;
+body {
+  background-color: bisque;
+}
+
+.title {
+  color: rgb(0, 153, 255);
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+  justify-content: space-between;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: solid 1px;
+  padding: 7%;
+  width: 70%;
+  margin-bottom: 10%;
+
+}
+
+.buttons-form-conteiner {
+  display: flex;
+  flex-direction: row;
 }
 
 .calendar-conteiner {

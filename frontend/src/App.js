@@ -4,7 +4,7 @@ import Main from './pages/Main'
 function App() {
   return (
     <div className="App">
-      <h1>Calendario DIO SPA</h1>
+      <h1 className="title">Calendario DIO SPA</h1>
       <Main />
     </div>
   );
