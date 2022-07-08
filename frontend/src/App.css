@@ -2,11 +2,6 @@ body {
   background-color: bisque;
 }
 
-.title {
-  color: rgb(0, 153, 255);
-  text-align: center;
-}
-
 .search-bar {
   display: flex;
   flex-direction: row;
@@ -27,7 +22,6 @@ main {
   padding: 7%;
   width: 70%;
   margin-bottom: 10%;
-
 }
 
 .buttons-form-conteiner {
@@ -37,4 +31,9 @@ main {
 
 .calendar-conteiner {
   width: 60%;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
 }

@@ -52,7 +52,7 @@ export default function AppProvider({ children }) {
     };
 
     getAllData();
-  }, []); 
+  }, [taskList]); 
 
   return (
     <AppContext.Provider

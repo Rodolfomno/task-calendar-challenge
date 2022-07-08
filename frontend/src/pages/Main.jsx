@@ -15,8 +15,10 @@ export default function Main() {
       <main>
       <section className="task-conteiner">
       <Search />
-        <Task />
-        {selectedTask.title && <SelectedCard />}
+        <div className="cards">
+          <Task />
+          {selectedTask.title && <SelectedCard />}
+        </div>
       </section>
       <Calendar />
       </main>

@@ -4,16 +4,10 @@ module.exports = {
   async up (queryInterface, _Sequelize) {
     await queryInterface.bulkInsert('Tasks', [
       {
-        title: 'coffee time',
-        description: 'drink cofeee',
+        title: 'Avaliar o Rodolfo',
+        description: 'Me chamar pra conversar',
         startDate: new Date(),
-        endDate: new Date('2026-01-01T12:00:00.000Z'),
-      },
-      {
-        title: 'lunch time',
-        description: 'have lunch',
-        startDate: new Date(),
-        endDate: new Date('2025-01-01T12:00:00.000Z'),
+        endDate: new Date(),
       },
     ]);
   },

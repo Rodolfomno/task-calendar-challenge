@@ -5,7 +5,6 @@ import DateInput from './DateInput';
 import postCreateTask from '../utils/postCreateTask';
 import { url } from '../utils/url';
 import updateTaskApi from '../utils/updateTaskApi';
-import getAllTasks from '../utils/getAllTasks';
 
 
 export default function Task() {
@@ -34,23 +33,21 @@ export default function Task() {
     } else {
       setIsDisabled(false);
     }
-  }, [title, description]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await getAllTasks(url);
-      setTaskList(response.data);
-    };
-    
-    fetchData();
-  }, [setTaskList]);
+  }, [title]);
 
   // function to create a task
   const createTask = async () => {
     const newTask = { title, description, startDate, endDate }
-    const response = await postCreateTask(url, newTask)
-    const newTaskList = [newTask, response.result];
-    setTaskList(newTaskList);
+    
+    try {
+      const response = await postCreateTask(url, newTask)
+      console.log(response);
+      const newTaskList = [newTask, response.resultData];
+      setTaskList(newTaskList);
+    } catch (error) {
+      console.log(error);
+    }
+
   }
 
   // function that handle submit button

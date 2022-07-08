@@ -1,6 +1,5 @@
 import { ITask } from '../Interfaces/ITask';
 import Task from '../database/models/taskModel';
-import { Op } from 'sequelize';
 
 export default class TaskService {
   public static async create(task: ITask) {

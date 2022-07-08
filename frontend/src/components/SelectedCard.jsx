@@ -27,8 +27,9 @@ function SelectedCard() {
   } = selectedTask;
 
   const handleEdit = () => {
-    console.log(selectedTask);
     setIsEditing(!isEditingTask);
+
+    setTaskList([...taskList]);
 
     setDescription(description || '');
     setTitle(title);
